@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Credit Card Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #222;
+            color: #ff0000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        header img {
+            height: 50px;
+            cursor: pointer;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: #ff0000;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        nav a:hover {
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 1.5rem;
+            background: linear-gradient(135deg, #000, #222);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ff0000;
+        }
+
+        .container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .about-content img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .about-text {
+            background-color: #222;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .about-text h2 {
+            color: #ff0000;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #111;
+            color: #ff0000;
+            margin-top: 2rem;
+        }
+
+        footer .grid {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        footer a {
+            color: #ff0000;
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        footer a:hover {
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Logo">
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="login.html">Login</a>
+            <a href="signup.html">Sign Up</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>About Us</h1>
+        <p>Learn more about who we are and what drives us to provide the best services.</p>
+    </div>
+
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Our Mission</h2>
+                <p>
+                    At Credit Card Solutions, our mission is to empower individuals and businesses by providing 
+                    top-notch credit card products and services. We aim to simplify financial transactions, ensuring 
+                    security and efficiency at every step.
+                </p>
+                <h2>Who We Are</h2>
+                <p>
+                    Established in 2025, Credit Card Solutions is a trusted provider of innovative financial solutions. 
+                    Our team of dedicated professionals works tirelessly to create customized solutions for each 
+                    client, ensuring their financial success.
+                </p>
+            </div>
+            <img src="team.jpg" alt="Our Team">
+        </div>
+    </div>
+
+    <footer>
+        <div class="grid">
+            <div>
+                <h3>Quick Links</h3>
+                <a href="home.html">Home</a><br>
+                <a href="services.html">Services</a><br>
+                <a href="products.html">Products</a><br>
+                <a href="contact.html">Contact</a><br>
+                <a href="about.html">About Us</a>
+            </div>
+            <div>
+                <h3>Follow Us</h3>
+                <a href="#">Facebook</a><br>
+                <a href="#">Twitter</a><br>
+                <a href="#">Instagram</a><br>
+                <a href="#">LinkedIn</a>
+            </div>
+            <div>
+                <h3>Company</h3>
+                <p>&copy; 2025 Credit Card Sales and Maintenance Company, India. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Credit Card Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Loader Container */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Loader Animation */
+.loader-animation {
+    text-align: center;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Ring Animation */
+.loader-ring {
+    width: 80px;
+    height: 80px;
+    border: 8px solid #444;
+    border-top: 8px solid #ff0000;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+    margin: 0 auto 15px;
+}
+
+/* Loader Text */
+.loader-text {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    animation: text-blink 2s infinite ease-in-out;
+}
+
+/* Animations */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes text-blink {
+    0%, 100% { color: #ff0000; }
+    50% { color: #fff; }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+        /* Base styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #222;
+            color: #ff0000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        header img {
+            height: 50px;
+            cursor: pointer;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: #ff0000;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        nav a:hover {
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 1.5rem;
+            background: linear-gradient(135deg, #000, #222);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ff0000;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero .btn {
+            padding: 0.8rem 1.8rem;
+            background-color: #ff0000;
+            color: #000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .hero .btn:hover {
+            background-color: #d40000;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+        }
+
+        .container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: #222;
+            color: #fff;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            color: #ff0000;
+        }
+
+        .features, .how-it-works, .customer-benefits {
+            margin-bottom: 3rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #111;
+            color: #ff0000;
+            margin-top: 2rem;
+        }
+
+        footer .grid {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        footer a {
+            color: #ff0000;
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        footer a:hover {
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @media (max-width: 480px) {
+            header img {
+                height: 40px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .btn {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Chatbot container styles */
+#chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    font-family: 'Roboto', sans-serif;
+}
+
+#chatbot-toggle {
+    background: linear-gradient(135deg, #ff0000, #d40000);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+#chatbot-toggle:hover {
+    transform: scale(1.1);
+}
+
+#chatbot {
+    display: none;
+    width: 350px;
+    height: 500px;
+    background: linear-gradient(135deg, #000, #222);
+    color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#chatbot-header {
+    background: linear-gradient(135deg, #ff0000, #d40000);
+    padding: 15px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#chatbot-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bot-message,
+.user-message {
+    max-width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
+
+.bot-message {
+    background: #444;
+    color: #fff;
+    align-self: flex-start;
+    animation: slideIn 0.3s ease-out;
+}
+
+.user-message {
+    background: #ff0000;
+    color: #000;
+    align-self: flex-end;
+    animation: slideIn 0.3s ease-out;
+}
+
+#chatbot-input-container {
+    display: flex;
+    padding: 10px;
+    background: #111;
+    border-top: 1px solid #333;
+}
+
+#chatbot-input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background: #333;
+    color: #fff;
+    outline: none;
+    margin-right: 10px;
+}
+
+#chatbot-send {
+    background: linear-gradient(135deg, #ff0000, #d40000);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+#chatbot-send:hover {
+    background: linear-gradient(135deg, #d40000, #ff0000);
+    box-shadow: 0 8px 15px rgba(255, 0, 0, 0.5);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+    </style>
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-animation">
+            <div class="loader-ring"></div>
+            <div class="loader-text">Loading...</div>
+        </div>
+    </div>
+    <script>
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.style.animation = 'fadeOut 2.5s ease-in-out forwards';
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 600);
+        });
+    </script>
+    <header>
+        <img src="Credt card.png" alt="Logo">
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="login.html">Login</a>
+            <a href="signup.html">Sign Up</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Welcome to Credit Card Solutions</h1>
+        <p>Your one-stop destination for reliable credit card services and products.</p>
+        <a href="services.html" class="btn">Explore Our Services</a>
+    </div>
+
+    <div class="container">
+        <section class="features">
+            <h2>Our Features</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Advanced Security</h3>
+                    <p>Top-notch encryption ensures your transactions are safe and secure.</p>
+                </div>
+                <div class="card">
+                    <h3>Customizable Plans</h3>
+                    <p>Choose from a range of credit card options to fit your lifestyle.</p>
+                </div>
+                <div class="card">
+                    <h3>24/7 Support</h3>
+                    <p>Our dedicated team is here to assist you at any time, any day.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-it-works">
+            <h2>How It Works</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. Apply Online</h3>
+                    <p>Fill out our simple online application to get started.</p>
+                </div>
+                <div class="card">
+                    <h3>2. Get Approved</h3>
+                    <p>Our fast approval process ensures you won't have to wait long.</p>
+                </div>
+                <div class="card">
+                    <h3>3. Start Using</h3>
+                    <p>Enjoy the benefits of your new credit card right away.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="customer-benefits">
+            <h2>Benefits for You</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Exclusive Rewards</h3>
+                    <p>Earn points and rewards for every purchase you make.</p>
+                </div>
+                <div class="card">
+                    <h3>Global Acceptance</h3>
+                    <p>Use your credit card anywhere in the world without hassle.</p>
+                </div>
+                <div class="card">
+                    <h3>Low Interest Rates</h3>
+                    <p>Enjoy competitive interest rates designed to save you money.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<div id="chatbot-container">
+    <button id="chatbot-toggle">💬</button>
+    <div id="chatbot">
+        <div id="chatbot-header">
+            <span>🧠 AI Assistant</span>
+            <button id="chatbot-close">✖</button>
+        </div>
+        <div id="chatbot-messages">
+            <div class="bot-message">Hi there! 👋 How can I assist you today?</div>
+        </div>
+        <div id="chatbot-input-container">
+            <input type="text" id="chatbot-input" placeholder="Type your message here...">
+            <button id="chatbot-send">➤</button>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const chatbotToggle = document.getElementById("chatbot-toggle");
+                const chatbot = document.getElementById("chatbot");
+                const chatbotClose = document.getElementById("chatbot-close");
+                const chatbotMessages = document.getElementById("chatbot-messages");
+                const chatbotInput = document.getElementById("chatbot-input");
+                const chatbotSend = document.getElementById("chatbot-send");
+        
+                // Toggle chatbot visibility
+                chatbotToggle.addEventListener("click", () => {
+                    chatbot.style.display = chatbot.style.display === "none" || !chatbot.style.display ? "flex" : "none";
+                });
+        
+                chatbotClose.addEventListener("click", () => {
+                    chatbot.style.display = "none";
+                });
+        
+                // Send message
+                chatbotSend.addEventListener("click", sendMessage);
+                chatbotInput.addEventListener("keypress", (event) => {
+                    if (event.key === "Enter") {
+                        sendMessage();
+                    }
+                });
+        
+                function sendMessage() {
+                    const userMessage = chatbotInput.value.trim();
+                    if (userMessage) {
+                        addMessage("user", userMessage);
+                        chatbotInput.value = "";
+                        setTimeout(() => {
+                            addMessage("bot", getBotResponse(userMessage));
+                        }, 700);
+                    }
+                }
+        
+                function addMessage(sender, text) {
+                    const message = document.createElement("div");
+                    message.classList.add(`${sender}-message`);
+                    message.textContent = text;
+                    chatbotMessages.appendChild(message);
+                    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                }
+        
+                function getBotResponse(message) {
+                    const responses = {
+                        "hello": "Hello! 😊 How can I help you today?",
+                        "services": "We provide top-notch credit card solutions tailored to your needs. Check our services page for details.",
+                        "contact": "You can reach us via email at aaak4sh@gmail.com or call us at +91 8619810822.",
+                        "thank you": "You're welcome! 😊",
+                    };
+                    return responses[message.toLowerCase()] || "I'm here to assist you! Can you please clarify your question?";
+                }
+            });
+        </script>
+        
+    </div>
+</div>
+
+
+
+    <footer>
+        <div class="grid">
+            <div>
+                <h3>Quick Links</h3>
+                <a href="home.html">Home</a><br>
+                <a href="services.html">Services</a><br>
+                <a href="products.html">Products</a><br>
+                <a href="contact.html">Contact</a><br>
+                <a href="about.html">About Us</a>
+            </div>
+            <div>
+                <h3>Follow Us</h3>
+                <a href="#">Facebook</a><br>
+                <a href="#">Twitter</a><br>
+                <a href="#">Instagram</a><br>
+                <a href="#">LinkedIn</a>
+            </div>
+            <div>
+                <h3>Company</h3>
+                <p>&copy; 2025 Credit Card Sales and Maintenance Company, India. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
